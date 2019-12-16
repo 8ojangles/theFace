@@ -1,0 +1,477 @@
+{% extends "./base/base.html" %}
+
+{% block pageTitle %}
+<title>Sun Face</title>
+{% endblock %}
+
+{% block pageContent %}
+    <!-- Page contents -->
+
+    <div class="bg-container">
+    	<div class="sky-gradient sky-gradient-11"></div>
+    	<!-- <div class="sky-gradient sky-gradient-00"></div>
+		<div class="sky-gradient sky-gradient-01"></div>
+		<div class="sky-gradient sky-gradient-02"></div>
+		<div class="sky-gradient sky-gradient-03"></div>
+		<div class="sky-gradient sky-gradient-04"></div>
+		<div class="sky-gradient sky-gradient-05"></div>
+		<div class="sky-gradient sky-gradient-06"></div>
+		<div class="sky-gradient sky-gradient-07"></div>
+		<div class="sky-gradient sky-gradient-08"></div>
+		<div class="sky-gradient sky-gradient-09"></div>
+		<div class="sky-gradient sky-gradient-10"></div>
+		<div class="sky-gradient sky-gradient-11"></div>
+		<div class="sky-gradient sky-gradient-12"></div>
+		<div class="sky-gradient sky-gradient-13"></div>
+		<div class="sky-gradient sky-gradient-14"></div>
+		<div class="sky-gradient sky-gradient-15"></div>
+		<div class="sky-gradient sky-gradient-16"></div>
+		<div class="sky-gradient sky-gradient-17"></div>
+		<div class="sky-gradient sky-gradient-18"></div>
+		<div class="sky-gradient sky-gradient-19"></div>
+		<div class="sky-gradient sky-gradient-20"></div>
+		<div class="sky-gradient sky-gradient-21"></div>
+		<div class="sky-gradient sky-gradient-22"></div>
+		<div class="sky-gradient sky-gradient-23"></div>
+		<div class="sky-gradient sky-gradient-24"></div> -->
+    </div>
+
+    <div class="canvas-container">
+    	<canvas id="corona-layer"></canvas>
+		<canvas id="face-layer"></canvas>
+		<canvas id="flare-layer"></canvas>
+		<div class="control--panel">
+			<header>
+				<button data-page-select="page-elements" class="js-page-select page-elements is-active">Facial features</button>
+				<button data-page-select="page-anims" class="js-page-select page-anims">Advanced</button>
+			</header>
+			<div class="control--panel__page-wrapper">
+				<div data-page="page-elements" class="control--panel__page is-active" data-page-order="1">
+
+					<section class="control--panel__section section-aim-target">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Look Target' ) }}
+							<fieldset>
+								{{ controlPanelSectionItemRange(
+									{id: 'lookTargetX', label1: 'Left', label2: 'Right', min: -100, max: 100, step: 0.1, controller: 'look' }
+								) }}
+								{{ controlPanelSectionItemRange(
+									{id: 'lookTargetY', label1: 'Up', label2: 'Down', min: -100, max: 100, step: 0.1, controller: 'look' }
+								) }}
+								{{ controlPanelSectionItemRange(
+									{id: 'lookTargetZ', label1: 'Near', label2: 'Far', min: -100, max: 100, step: 0.1, controller: 'look' }
+								) }}
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-brows">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Eyebrows' ) }}
+							<fieldset>
+								{{ controlPanelSectionItemRange(
+									{ id: 'leftEyebrow', title: 'Left', label1: 'Down', label2: 'Up', min: 0, max: 100, step: 1, multiplier: -1 }
+								) }}
+								{{ controlPanelSectionItemRange(
+									{ id: 'leftBrowContract', label1: 'Relax', label2: 'Contract', min: 0, max: 100, step: 0.01 }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange(
+									{ id: 'rightEyebrow', title: 'Right', label1: 'Down', label2: 'Up', min: 0, max: 100, step: 1, multiplier: -1 }
+								) }}
+								{{ controlPanelSectionItemRange(
+									{ id: 'rightBrowContract', label1: 'Relax', label2: 'Contract', min: 0, max: 100, step: 0.01 }
+								) }}
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-eyes">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Eyes' ) }}
+							<fieldset>
+								{{ controlPanelSectionItemRange(
+									{ id: 'leftEye', title: 'Left', label1: 'Closed', label2: 'Open', min: -50, max: 50, step: 0.01 }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange(
+									{ id: 'rightEye', title: 'Right', label1: 'Closed', label2: 'Open', min: -50, max: 50, step: 0.01 }
+								) }}
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-forehead">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Nose' ) }}
+							<fieldset>
+								{{ controlPanelSectionItemRange( 
+									{ id: 'nostrilRaiseL', title: 'Left nostril', label1: 'Pout', label2: 'Wrinkled', min: -50, max: 50, step: 0.01, multiplier: -1 }
+								) }}
+								{{ controlPanelSectionItemRange( 
+									{ id: 'nostrilFlareL', label1: 'Relax', label2: 'Flare', min: 0, max: 50, step: 0.01 }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange( 
+									{ id: 'nostrilRaiseR', title: 'Right nostril', label1: 'Pout', label2: 'Wrinkled', min: -50, max: 50, step: 0.01, multiplier: -1 }
+								) }}
+								{{ controlPanelSectionItemRange( 
+									{ id: 'nostrilFlareR', label1: 'Relax', label2: 'Flare', min: 0, max: 50, step: 0.01 }
+								) }}
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-cheeks">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Cheeks' ) }}
+							<fieldset>
+								{{ controlPanelSectionItemRange(
+									{ id: 'leftCheek', title: 'Left', label1: 'Down', label2: 'Up', min: 0, max: 100, step: 0.01, multiplier: -1 }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange( 
+									{ id: 'rightCheek', title: 'Right', label1: 'Down', label2: 'Up', min: 0, max: 100, step: 0.01, multiplier: -1 }
+								) }}
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-mouth">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Mouth' ) }}
+							<fieldset>
+								{{ controlPanelSectionItemRange( 
+									{ id: 'mouthEdgeLeft',title: 'Left corner',  label1: 'Pull in', label2: 'Pull out', min: -50, max: 50, step: 0.01, multiplier: -1 }
+								) }}
+								{{ controlPanelSectionItemRange( 
+									{ id: 'mouthEdgeLeftExtend',  label1: 'Pull down', label2: 'Pull up', min: -50, max: 50, step: 0.01, multiplier: -1 }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange( 
+									{ id: 'mouthEdgeRight', title: 'Right corner', label1: 'Pull in', label2: 'Pull out', min: -50, max: 50, step: 0.01 }
+								) }}
+								{{ controlPanelSectionItemRange( 
+									{ id: 'mouthEdgeRightExtend',  label1: 'Pull down', label2: 'Pull up', min: -50, max: 50, step: 0.01, multiplier: -1 }
+								) }}
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-lips">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Lips' ) }}
+							<fieldset>
+								{{ controlPanelSectionItemRange(
+									{ id: 'lipsPucker', title: 'Pucker Lips', label1: 'Relax', label2: 'Puckered', min: 0, max: 100, step: 0.01 }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange(
+									{ id: 'topLipOpen', title: 'Top Lip', label1: 'Closed', label2: 'Open', min: 0, max: 100, step: 0.01 }
+								) }}
+								{{ controlPanelSectionItemRange(
+									{ id: 'topLipLeftPull', label1: 'Relax', label2: 'Pull up-left', min: 0, max: 100, step: 0.01 }
+								) }}
+								{{ controlPanelSectionItemRange(
+									{ id: 'topLipRightPull', label1: 'Relax', label2: 'Pull up-right', min: 0, max: 100, step: 0.01 }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange(
+									{ id: 'bottomLipOpen', title: 'Bottom lip', label1: 'Closed', label2: 'Open', min: -50, max: 50, step: 0.01 }
+								) }}
+								{{ controlPanelSectionItemRange(
+									{ id: 'bottomLipLeftPull', label1: 'Relax', label2: 'Pull down-left', min: 0, max: 100, step: 0.01 }
+								) }}
+								{{ controlPanelSectionItemRange(
+									{ id: 'bottomLipRightPull', label1: 'Relax', label2: 'Pull down-right', min: 0, max: 100, step: 0.01 }
+								) }}
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-jowls">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Jaw' ) }}
+							<fieldset>
+								{{ controlPanelSectionItemRange(
+									{ id: 'jawOpen', label1: 'Closed', label2: 'Open', min: 0, max: 100, step: 0.01 }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange(
+									{ id: 'jawLateral', label1: 'Left', label2: 'Right', min: -100, max: 100, step: 0.01 }
+								) }}
+							</fieldset>
+						</div>
+					</section>
+
+				</div>
+
+				<div data-page="page-anims" class="control--panel__page" data-page-order="2">
+
+					<section class="control--panel__section">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Animation speed' ) }}
+							<fieldset class="js-speed-list">
+								<ul class="button-list">
+									
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-slowest" data-anim-speed="1.75">Slowest</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-slower" data-anim-speed="1.5">Slower</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-slower" data-anim-speed="1.25">Slow</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-fast" data-anim-speed="1.0">Fast</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-faster" data-anim-speed="0.75">Faster</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-fastest selected" data-anim-speed="0.5">Fastest</button>
+										</div>
+									</li>
+									<!-- pseudo buttons-->
+									<li>
+										<div>
+											<div class="pseudo-button no-bg">
+												<span>Duration</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div>
+											<div class="pseudo-button no-bg">
+												<div>
+													<input
+														type="number"
+														name="custom-speed-input"
+														id="custom-speed-input"
+														class="js-custom-anim-speed-input custom-speed-input"
+														min="0.1" max="10" step="0.1"
+													/>
+													<span class="input-denominator">s</span>
+												</div>
+
+											</div>
+										</div>
+									</li>
+									<li>
+										<div>
+											<label class="pseudo-button" for="custom-speed-input">Custom</label>
+										</div>
+									</li>
+
+									{# <li class="custom-speed-input-listitem">
+
+										<div class="custom-speed-input-container">
+
+											<div class="custom-speed-ouput">
+												<span class="custom-speed-label">Duration </span>
+												<div>
+													<input
+														type="number"
+														name="custom-speed-input"
+														id="custom-speed-input"
+														class="js-custom-anim-speed-input custom-speed-input"
+														min="0.1" max="10" step="0.01"
+													/>
+													<span class="input-denominator">s</span>
+												</div>
+											</div>
+
+											<div class="custom-speed-ouput-button">
+												<button class="text-button">Custom</button>
+											</div>
+
+										</div>
+
+									</li>
+	 #}
+
+								</ul>
+								
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Expressions' ) }}
+							<fieldset class="js-expression-list">
+								<ul class="button-list">
+									<li>
+										<div>
+											<button class="expression-smile">Smile</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-smile-big">Big Smile</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-ecstatic">Ecstatic</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-sad">Sad</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-very-sad">Very Sad</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-angry">Angry</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-very-angry">Very Angry</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-rage">Rage</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-surprised">Surprised</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-perplexed">Perplexed</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-blink">Blink</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-reset">Reset</button>
+										</div>
+									</li>
+								</ul>
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Sequences' ) }}
+							<fieldset class="js-sequence-list">
+								<ul class="button-list">
+									<li>
+										<div>
+											<button class="sequence-yawn">Yawn</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="sequence-eye-roll">Eye roll</button>
+										</div>
+									</li>
+								</ul>
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section">
+						<div class="panel--content">
+							{{ controlPanelSectionHeader( 'Corona Glare Spikes' ) }}
+							<fieldset class="js-glare-spike-effects">
+								{{ controlPanelSectionItemRange(
+									{ title: 'Spike Count', id: 'spikeCountInput', label1: '4 (Min)', label2: '100 (Max)', min: 4, max: 100, step: 2, controller: 'glareSpike' }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange(
+									{ title: 'Radius', id: 'spikeRadiusInput', label1: 'Min', label2: 'Max', min: 0, max: 1, step: 0.01, controller: 'glareSpike' }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange(
+									{ title: 'Major spike size', id: 'spikeMajorSize', label1: 'Min', label2: 'Max', min: 0, max: 1, step: 0.01, controller: 'glareSpike' }
+								) }}
+								{{ controlPanelSectionItemRange(
+									{ title: 'Minor spike size', id: 'spikeMinorSize', label1: 'Min', label2: 'Max', min: 0, max: 1, step: 0.01, controller: 'glareSpike' }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange(
+									{ title: 'Major Spike Width', id: 'spikeMajorWidth', label1: 'Min', label2: 'Max', min: 0, max: 1, step: 0.01, controller: 'glareSpike', flipped: true }
+								) }}
+								{{ controlPanelSectionItemRange(
+									{ title: 'Minor Spike Width', id: 'spikeMinorWidth', label1: 'Min', label2: 'Max', min: 0, max: 1, step: 0.01, controller: 'glareSpike', flipped: true }
+								) }}
+								<hr />
+								{{ controlPanelSectionItemRange(
+									{ title: 'Blur amount', id: 'spikeBlurAmount', label1: 'Min', label2: 'Max', min: 0, max: 1, step: 0.01, controller: 'glareSpike' }
+								) }}
+							</fieldset>
+						</div>
+					</section>
+			
+				</div>
+				
+			</div>
+
+			<footer>
+				<div class="footer-content">
+					<h3 class="footer-title">Display</h3>
+
+					<div class="btn-group js-display-controls">
+						<button class="button" data-display-item="displayCentreLines">Centre lines</button>
+						<button class="button" data-display-item="displayAnchors">Anchor points</button>
+						<button class="button" data-display-item="displayControlPoints">Control points</button>
+						<button class="button" data-display-item="displayHulls">Hulls</button>
+						<button class="button" data-display-item="displayLookTarget">Look target</button>
+						<button class="button" data-display-item="displayGlareSpikes">Glare Spikes</button>
+						<button class="button" data-display-item="displaySunToStage">Sun to Centre</button>
+						<button class="button js-attachFlareCanvas">Flare OSC</button>
+
+					</div>
+
+					<div class="btn-group">
+						<button class="button full js-export-expression">Export Expression</button>
+					</div>
+				</div>
+			</footer>
+
+		</div>
+
+	</div>
+
+	<div id="ofcCanvasAttachmentBox" class="asset-canvas-display-layer">
+		
+	</div>
+
+	<div class="export-overlay--container js-close-export-overlay">
+
+		<div class="export-overlay--contents js-close-export-overlay-limiter">
+			<p>Copy and paste these parameters into an expression file</p>
+			<button class="js-close-export-overlay close-export-overlay button">&#215;</button>
+			<div class="export-overlay--output"></div>		
+		</div>
+	
+	</div>
+{% endblock %}

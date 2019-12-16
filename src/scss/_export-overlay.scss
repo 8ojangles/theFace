@@ -1,0 +1,61 @@
+.export-overlay--container {
+	position: absolute;
+	z-index: 200;
+
+	@include flex-centered-children();
+
+	width: 100vw;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+	opacity: 0;
+	background-color: rgba( 0, 0, 0, 0.6 );
+	pointer-events: none;
+
+	transition: opacity 0.2s ease;
+
+	&.is-active {
+		opacity: 1;
+		pointer-events: initial;
+	}
+
+}
+
+.export-overlay--contents {
+	position: relative;
+	width: 50%;
+	height: auto;
+	padding: $standard-spacing;
+	background: darken( $blue-medium, 40% );
+	box-shadow: 0 4px 20px rgba( 0, 0, 0, 0.6 );
+
+	p {
+		color: lighten( $blue-medium, 10% );
+	}
+
+	button {
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+	}
+}
+
+.close-export-overlay {
+	position: absolute;
+	right: $standard-spacing;
+	top: $standard-spacing;
+	font-size: 2rem;
+	color: $blue-medium;
+
+	&:hover {
+		color: lighten( $blue-medium, 30% );
+	}
+}
+
+.export-overlay--output {
+	background-color: #dddddd;
+	color: #333333;
+	padding: $large-spacing;
+	overflow: scroll;
+}
+

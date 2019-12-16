@@ -1,0 +1,1033 @@
+
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    
+<title>Sun Face</title>
+
+    
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <main>
+    
+    <!-- Page contents -->
+
+    <div class="bg-container">
+    	<div class="sky-gradient sky-gradient-11"></div>
+    	<!-- <div class="sky-gradient sky-gradient-00"></div>
+		<div class="sky-gradient sky-gradient-01"></div>
+		<div class="sky-gradient sky-gradient-02"></div>
+		<div class="sky-gradient sky-gradient-03"></div>
+		<div class="sky-gradient sky-gradient-04"></div>
+		<div class="sky-gradient sky-gradient-05"></div>
+		<div class="sky-gradient sky-gradient-06"></div>
+		<div class="sky-gradient sky-gradient-07"></div>
+		<div class="sky-gradient sky-gradient-08"></div>
+		<div class="sky-gradient sky-gradient-09"></div>
+		<div class="sky-gradient sky-gradient-10"></div>
+		<div class="sky-gradient sky-gradient-11"></div>
+		<div class="sky-gradient sky-gradient-12"></div>
+		<div class="sky-gradient sky-gradient-13"></div>
+		<div class="sky-gradient sky-gradient-14"></div>
+		<div class="sky-gradient sky-gradient-15"></div>
+		<div class="sky-gradient sky-gradient-16"></div>
+		<div class="sky-gradient sky-gradient-17"></div>
+		<div class="sky-gradient sky-gradient-18"></div>
+		<div class="sky-gradient sky-gradient-19"></div>
+		<div class="sky-gradient sky-gradient-20"></div>
+		<div class="sky-gradient sky-gradient-21"></div>
+		<div class="sky-gradient sky-gradient-22"></div>
+		<div class="sky-gradient sky-gradient-23"></div>
+		<div class="sky-gradient sky-gradient-24"></div> -->
+    </div>
+
+    <div class="canvas-container">
+    	<canvas id="corona-layer"></canvas>
+		<canvas id="face-layer"></canvas>
+		<canvas id="flare-layer"></canvas>
+		<div class="control--panel">
+			<header>
+				<button data-page-select="page-elements" class="js-page-select page-elements is-active">Facial features</button>
+				<button data-page-select="page-anims" class="js-page-select page-anims">Advanced</button>
+			</header>
+			<div class="control--panel__page-wrapper">
+				<div data-page="page-elements" class="control--panel__page is-active" data-page-order="1">
+
+					<section class="control--panel__section section-aim-target">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Look Target</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset>
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="lookTargetX" name="lookTargetX" min="-100" max="100" step="0.1" data-modifier="lookTargetX" data-value-multiplier="1" data-control="look">
+		<div class="control--panel__item-labels">
+			<label for="lookTargetX">Left</label>
+			<label for="lookTargetX">Right</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="lookTargetX">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="lookTargetY" name="lookTargetY" min="-100" max="100" step="0.1" data-modifier="lookTargetY" data-value-multiplier="1" data-control="look">
+		<div class="control--panel__item-labels">
+			<label for="lookTargetY">Up</label>
+			<label for="lookTargetY">Down</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="lookTargetY">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="lookTargetZ" name="lookTargetZ" min="-100" max="100" step="0.1" data-modifier="lookTargetZ" data-value-multiplier="1" data-control="look">
+		<div class="control--panel__item-labels">
+			<label for="lookTargetZ">Near</label>
+			<label for="lookTargetZ">Far</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="lookTargetZ">0</output>
+	</div>
+</div>
+
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-brows">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Eyebrows</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset>
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="leftEyebrow">Left</label>
+		
+		<input type="range" class="range-slider" id="leftEyebrow" name="leftEyebrow" min="0" max="100" step="1" data-modifier="leftEyebrow" data-value-multiplier="-1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="leftEyebrow">Down</label>
+			<label for="leftEyebrow">Up</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="leftEyebrow">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="leftBrowContract" name="leftBrowContract" min="0" max="100" step="0.01" data-modifier="leftBrowContract" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="leftBrowContract">Relax</label>
+			<label for="leftBrowContract">Contract</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="leftBrowContract">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="rightEyebrow">Right</label>
+		
+		<input type="range" class="range-slider" id="rightEyebrow" name="rightEyebrow" min="0" max="100" step="1" data-modifier="rightEyebrow" data-value-multiplier="-1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="rightEyebrow">Down</label>
+			<label for="rightEyebrow">Up</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="rightEyebrow">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="rightBrowContract" name="rightBrowContract" min="0" max="100" step="0.01" data-modifier="rightBrowContract" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="rightBrowContract">Relax</label>
+			<label for="rightBrowContract">Contract</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="rightBrowContract">0</output>
+	</div>
+</div>
+
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-eyes">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Eyes</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset>
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="leftEye">Left</label>
+		
+		<input type="range" class="range-slider" id="leftEye" name="leftEye" min="-50" max="50" step="0.01" data-modifier="leftEye" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="leftEye">Closed</label>
+			<label for="leftEye">Open</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="leftEye">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="rightEye">Right</label>
+		
+		<input type="range" class="range-slider" id="rightEye" name="rightEye" min="-50" max="50" step="0.01" data-modifier="rightEye" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="rightEye">Closed</label>
+			<label for="rightEye">Open</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="rightEye">0</output>
+	</div>
+</div>
+
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-forehead">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Nose</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset>
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="nostrilRaiseL">Left nostril</label>
+		
+		<input type="range" class="range-slider" id="nostrilRaiseL" name="nostrilRaiseL" min="-50" max="50" step="0.01" data-modifier="nostrilRaiseL" data-value-multiplier="-1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="nostrilRaiseL">Pout</label>
+			<label for="nostrilRaiseL">Wrinkled</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="nostrilRaiseL">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="nostrilFlareL" name="nostrilFlareL" min="0" max="50" step="0.01" data-modifier="nostrilFlareL" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="nostrilFlareL">Relax</label>
+			<label for="nostrilFlareL">Flare</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="nostrilFlareL">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="nostrilRaiseR">Right nostril</label>
+		
+		<input type="range" class="range-slider" id="nostrilRaiseR" name="nostrilRaiseR" min="-50" max="50" step="0.01" data-modifier="nostrilRaiseR" data-value-multiplier="-1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="nostrilRaiseR">Pout</label>
+			<label for="nostrilRaiseR">Wrinkled</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="nostrilRaiseR">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="nostrilFlareR" name="nostrilFlareR" min="0" max="50" step="0.01" data-modifier="nostrilFlareR" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="nostrilFlareR">Relax</label>
+			<label for="nostrilFlareR">Flare</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="nostrilFlareR">0</output>
+	</div>
+</div>
+
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-cheeks">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Cheeks</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset>
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="leftCheek">Left</label>
+		
+		<input type="range" class="range-slider" id="leftCheek" name="leftCheek" min="0" max="100" step="0.01" data-modifier="leftCheek" data-value-multiplier="-1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="leftCheek">Down</label>
+			<label for="leftCheek">Up</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="leftCheek">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="rightCheek">Right</label>
+		
+		<input type="range" class="range-slider" id="rightCheek" name="rightCheek" min="0" max="100" step="0.01" data-modifier="rightCheek" data-value-multiplier="-1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="rightCheek">Down</label>
+			<label for="rightCheek">Up</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="rightCheek">0</output>
+	</div>
+</div>
+
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-mouth">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Mouth</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset>
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="mouthEdgeLeft">Left corner</label>
+		
+		<input type="range" class="range-slider" id="mouthEdgeLeft" name="mouthEdgeLeft" min="-50" max="50" step="0.01" data-modifier="mouthEdgeLeft" data-value-multiplier="-1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="mouthEdgeLeft">Pull in</label>
+			<label for="mouthEdgeLeft">Pull out</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="mouthEdgeLeft">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="mouthEdgeLeftExtend" name="mouthEdgeLeftExtend" min="-50" max="50" step="0.01" data-modifier="mouthEdgeLeftExtend" data-value-multiplier="-1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="mouthEdgeLeftExtend">Pull down</label>
+			<label for="mouthEdgeLeftExtend">Pull up</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="mouthEdgeLeftExtend">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="mouthEdgeRight">Right corner</label>
+		
+		<input type="range" class="range-slider" id="mouthEdgeRight" name="mouthEdgeRight" min="-50" max="50" step="0.01" data-modifier="mouthEdgeRight" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="mouthEdgeRight">Pull in</label>
+			<label for="mouthEdgeRight">Pull out</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="mouthEdgeRight">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="mouthEdgeRightExtend" name="mouthEdgeRightExtend" min="-50" max="50" step="0.01" data-modifier="mouthEdgeRightExtend" data-value-multiplier="-1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="mouthEdgeRightExtend">Pull down</label>
+			<label for="mouthEdgeRightExtend">Pull up</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="mouthEdgeRightExtend">0</output>
+	</div>
+</div>
+
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-lips">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Lips</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset>
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="lipsPucker">Pucker Lips</label>
+		
+		<input type="range" class="range-slider" id="lipsPucker" name="lipsPucker" min="0" max="100" step="0.01" data-modifier="lipsPucker" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="lipsPucker">Relax</label>
+			<label for="lipsPucker">Puckered</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="lipsPucker">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="topLipOpen">Top Lip</label>
+		
+		<input type="range" class="range-slider" id="topLipOpen" name="topLipOpen" min="0" max="100" step="0.01" data-modifier="topLipOpen" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="topLipOpen">Closed</label>
+			<label for="topLipOpen">Open</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="topLipOpen">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="topLipLeftPull" name="topLipLeftPull" min="0" max="100" step="0.01" data-modifier="topLipLeftPull" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="topLipLeftPull">Relax</label>
+			<label for="topLipLeftPull">Pull up-left</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="topLipLeftPull">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="topLipRightPull" name="topLipRightPull" min="0" max="100" step="0.01" data-modifier="topLipRightPull" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="topLipRightPull">Relax</label>
+			<label for="topLipRightPull">Pull up-right</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="topLipRightPull">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="bottomLipOpen">Bottom lip</label>
+		
+		<input type="range" class="range-slider" id="bottomLipOpen" name="bottomLipOpen" min="-50" max="50" step="0.01" data-modifier="bottomLipOpen" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="bottomLipOpen">Closed</label>
+			<label for="bottomLipOpen">Open</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="bottomLipOpen">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="bottomLipLeftPull" name="bottomLipLeftPull" min="0" max="100" step="0.01" data-modifier="bottomLipLeftPull" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="bottomLipLeftPull">Relax</label>
+			<label for="bottomLipLeftPull">Pull down-left</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="bottomLipLeftPull">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="bottomLipRightPull" name="bottomLipRightPull" min="0" max="100" step="0.01" data-modifier="bottomLipRightPull" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="bottomLipRightPull">Relax</label>
+			<label for="bottomLipRightPull">Pull down-right</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="bottomLipRightPull">0</output>
+	</div>
+</div>
+
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section section-jowls">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Jaw</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset>
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="jawOpen" name="jawOpen" min="0" max="100" step="0.01" data-modifier="jawOpen" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="jawOpen">Closed</label>
+			<label for="jawOpen">Open</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="jawOpen">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<input type="range" class="range-slider" id="jawLateral" name="jawLateral" min="-100" max="100" step="0.01" data-modifier="jawLateral" data-value-multiplier="1" data-face>
+		<div class="control--panel__item-labels">
+			<label for="jawLateral">Left</label>
+			<label for="jawLateral">Right</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="jawLateral">0</output>
+	</div>
+</div>
+
+							</fieldset>
+						</div>
+					</section>
+
+				</div>
+
+				<div data-page="page-anims" class="control--panel__page" data-page-order="2">
+
+					<section class="control--panel__section">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Animation speed</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset class="js-speed-list">
+								<ul class="button-list">
+									
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-slowest" data-anim-speed="1.75">Slowest</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-slower" data-anim-speed="1.5">Slower</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-slower" data-anim-speed="1.25">Slow</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-fast" data-anim-speed="1.0">Fast</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-faster" data-anim-speed="0.75">Faster</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="js-anim-speed anim-speed-fastest selected" data-anim-speed="0.5">Fastest</button>
+										</div>
+									</li>
+									<!-- pseudo buttons-->
+									<li>
+										<div>
+											<div class="pseudo-button no-bg">
+												<span>Duration</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div>
+											<div class="pseudo-button no-bg">
+												<div>
+													<input
+														type="number"
+														name="custom-speed-input"
+														id="custom-speed-input"
+														class="js-custom-anim-speed-input custom-speed-input"
+														min="0.1" max="10" step="0.1"
+													/>
+													<span class="input-denominator">s</span>
+												</div>
+
+											</div>
+										</div>
+									</li>
+									<li>
+										<div>
+											<label class="pseudo-button" for="custom-speed-input">Custom</label>
+										</div>
+									</li>
+
+									
+
+								</ul>
+								
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Expressions</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset class="js-expression-list">
+								<ul class="button-list">
+									<li>
+										<div>
+											<button class="expression-smile">Smile</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-smile-big">Big Smile</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-ecstatic">Ecstatic</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-sad">Sad</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-very-sad">Very Sad</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-angry">Angry</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-very-angry">Very Angry</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-rage">Rage</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-surprised">Surprised</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-perplexed">Perplexed</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-blink">Blink</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="expression-reset">Reset</button>
+										</div>
+									</li>
+								</ul>
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Sequences</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset class="js-sequence-list">
+								<ul class="button-list">
+									<li>
+										<div>
+											<button class="sequence-yawn">Yawn</button>
+										</div>
+									</li>
+									<li>
+										<div>
+											<button class="sequence-eye-roll">Eye roll</button>
+										</div>
+									</li>
+								</ul>
+							</fieldset>
+						</div>
+					</section>
+
+					<section class="control--panel__section">
+						<div class="panel--content">
+							
+<header class="js-section-toggle">
+	<span class="section-title">Corona Glare Spikes</span>
+	<button class="section-toggle">
+		<span class="js-toggle-icon toggle-icon">&#94;</span>
+	</button>
+</header>
+
+							<fieldset class="js-glare-spike-effects">
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="spikeCountInput">Spike Count</label>
+		
+		<input type="range" class="range-slider" id="spikeCountInput" name="spikeCountInput" min="4" max="100" step="2" data-modifier="spikeCountInput" data-value-multiplier="1" data-control="glareSpike">
+		<div class="control--panel__item-labels">
+			<label for="spikeCountInput">4 (Min)</label>
+			<label for="spikeCountInput">100 (Max)</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="spikeCountInput">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="spikeRadiusInput">Radius</label>
+		
+		<input type="range" class="range-slider" id="spikeRadiusInput" name="spikeRadiusInput" min="0" max="1" step="0.01" data-modifier="spikeRadiusInput" data-value-multiplier="1" data-control="glareSpike">
+		<div class="control--panel__item-labels">
+			<label for="spikeRadiusInput">Min</label>
+			<label for="spikeRadiusInput">Max</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="spikeRadiusInput">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="spikeMajorSize">Major spike size</label>
+		
+		<input type="range" class="range-slider" id="spikeMajorSize" name="spikeMajorSize" min="0" max="1" step="0.01" data-modifier="spikeMajorSize" data-value-multiplier="1" data-control="glareSpike">
+		<div class="control--panel__item-labels">
+			<label for="spikeMajorSize">Min</label>
+			<label for="spikeMajorSize">Max</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="spikeMajorSize">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="spikeMinorSize">Minor spike size</label>
+		
+		<input type="range" class="range-slider" id="spikeMinorSize" name="spikeMinorSize" min="0" max="1" step="0.01" data-modifier="spikeMinorSize" data-value-multiplier="1" data-control="glareSpike">
+		<div class="control--panel__item-labels">
+			<label for="spikeMinorSize">Min</label>
+			<label for="spikeMinorSize">Max</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="spikeMinorSize">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="spikeMajorWidth">Major Spike Width</label>
+		
+		<input type="range" class="range-slider range-flipped" id="spikeMajorWidth" name="spikeMajorWidth" min="0" max="1" step="0.01" data-modifier="spikeMajorWidth" data-value-multiplier="1" data-control="glareSpike">
+		<div class="control--panel__item-labels">
+			<label for="spikeMajorWidth">Min</label>
+			<label for="spikeMajorWidth">Max</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="spikeMajorWidth">0</output>
+	</div>
+</div>
+
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="spikeMinorWidth">Minor Spike Width</label>
+		
+		<input type="range" class="range-slider range-flipped" id="spikeMinorWidth" name="spikeMinorWidth" min="0" max="1" step="0.01" data-modifier="spikeMinorWidth" data-value-multiplier="1" data-control="glareSpike">
+		<div class="control--panel__item-labels">
+			<label for="spikeMinorWidth">Min</label>
+			<label for="spikeMinorWidth">Max</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="spikeMinorWidth">0</output>
+	</div>
+</div>
+
+								<hr />
+								
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		
+		<label for="spikeBlurAmount">Blur amount</label>
+		
+		<input type="range" class="range-slider" id="spikeBlurAmount" name="spikeBlurAmount" min="0" max="1" step="0.01" data-modifier="spikeBlurAmount" data-value-multiplier="1" data-control="glareSpike">
+		<div class="control--panel__item-labels">
+			<label for="spikeBlurAmount">Min</label>
+			<label for="spikeBlurAmount">Max</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="spikeBlurAmount">0</output>
+	</div>
+</div>
+
+							</fieldset>
+						</div>
+					</section>
+			
+				</div>
+				
+			</div>
+
+			<footer>
+				<div class="footer-content">
+					<h3 class="footer-title">Display</h3>
+
+					<div class="btn-group js-display-controls">
+						<button class="button" data-display-item="displayCentreLines">Centre lines</button>
+						<button class="button" data-display-item="displayAnchors">Anchor points</button>
+						<button class="button" data-display-item="displayControlPoints">Control points</button>
+						<button class="button" data-display-item="displayHulls">Hulls</button>
+						<button class="button" data-display-item="displayLookTarget">Look target</button>
+						<button class="button" data-display-item="displayGlareSpikes">Glare Spikes</button>
+						<button class="button" data-display-item="displaySunToStage">Sun to Centre</button>
+						<button class="button js-attachFlareCanvas">Flare OSC</button>
+
+					</div>
+
+					<div class="btn-group">
+						<button class="button full js-export-expression">Export Expression</button>
+					</div>
+				</div>
+			</footer>
+
+		</div>
+
+	</div>
+
+	<div id="ofcCanvasAttachmentBox" class="asset-canvas-display-layer">
+		
+	</div>
+
+	<div class="export-overlay--container js-close-export-overlay">
+
+		<div class="export-overlay--contents js-close-export-overlay-limiter">
+			<p>Copy and paste these parameters into an expression file</p>
+			<button class="js-close-export-overlay close-export-overlay button">&#215;</button>
+			<div class="export-overlay--output"></div>		
+		</div>
+	
+	</div>
+
+    </main>
+
+    <script src="js/vendor.js"></script>
+    <script src="js/main.js"></script>
+    
+</body>
+
+</html>

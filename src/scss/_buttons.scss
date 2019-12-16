@@ -1,0 +1,37 @@
+.btn {
+	background-color: $blue-medium;
+	border: 0;
+	font-size: 1.1rem;
+	padding: $standard-spacing;
+	color: $hex-white;
+	border-radius: $br-std;
+
+	&:hover {
+		cursor: pointer;
+		background-color: darken( $blue-medium, 15% );
+	}
+
+	&[ disabled ] {
+		background-color: $grey-light;
+		pointer-events: none;
+	}
+}
+
+
+.close-modal--button {
+	font-size: 3rem;
+	line-height: $large-spacing;
+	position: absolute;
+	top: $standard-spacing;
+	right: $standard-spacing;
+	padding: 0;
+	color: $grey-medium;
+	border: none;
+	background: transparent;
+
+	&:hover {
+		cursor: pointer;
+		color: $hex-black;
+	}
+
+}

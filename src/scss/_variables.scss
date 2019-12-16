@@ -1,0 +1,116 @@
+///////////////////////// colors
+
+// black - white
+$hex-white: #ffffff;
+$hex-black: #000000;
+
+// greys
+$grey-lightest: #e1e1e1;
+$grey-light: #cccccc;
+$grey-medium: #888888;
+$grey-dark: #555555;
+$grey-darkest: #222222;
+
+// reds
+$red-light: #cc0000;
+$red-medium: #9a0000;
+$red-dark: #660000;
+$red-darkest: #330000;
+
+// blues
+$blue-medium: #0055ff;
+
+// errors
+$error-red: $red-light;
+
+$theme-blue: #0055ff;
+$theme-blue-dark: #001133;
+
+$theme-purple: #503D99;
+$theme-deep-blue: #3914CC;
+
+$theme-orange: #FF9C0D;
+$theme-orange-light: #FFB140;
+
+
+$theme-brown: #CC6714;
+
+
+///////////////////////// page items
+$chair-color: $red-darkest;
+$chair-arms-color: $red-darkest;
+$seat-color: $grey-medium;
+$chair-hover-color-change: 40%;
+
+
+
+///////////////////////// page rhythm
+$standard-spacing: 1rem;
+
+$small-spacing: $standard-spacing / 2;
+$smaller-spacing: $standard-spacing / 4;
+
+$large-spacing: $standard-spacing * 2;
+
+
+
+///////////////////////// border-radii
+$br-std: 0.25rem;
+
+
+
+///////////////////////// animations
+$ticket-scale-inactive: 0.8;
+$ticket-scale-active: 1;
+
+
+
+///////////////////////// layers ( z-index )
+$z-100: 100;
+$z-90: 90;
+$z-80: 80;
+$z-70: 70;
+$z-60: 60;
+$z-50: 50;
+$z-40: 40;
+$z-30: 30;
+$z-20: 20;
+$z-10: 10;
+$z-0: 0;
+
+$z-top: $z-100;
+$z-mid: $z-50;
+$z-bottom: $z-0;
+
+
+
+///////////////////////// page items
+
+// control panel
+
+$cp-bg-color: $theme-blue-dark;
+
+// item
+$control-panel-item-header-color: $blue-medium;
+$control-panel-item-header-color-active: $theme-orange;
+$control-panel-item-header-color-active-hover: $theme-orange-light;
+
+$lip-glint-width: 70%;
+$lip-glint-x: ( 100% - $lip-glint-width ) / 2;
+
+$lip-glint-height: 2px;
+$lip-glint-y: -$lip-glint-height;
+
+
+$lip-shade-width: 90%;
+$lip-shade-x: ( 100% - $lip-shade-width ) / 2;
+
+$lip-shade-height: 2px;
+$lip-shade-y: -$lip-shade-height;
+
+// spinner
+
+$spinner-size: 75px;
+$spinner-border-width: 1rem;
+$spinner-color: $blue-medium;
+$spinner-duration: 0.5s;

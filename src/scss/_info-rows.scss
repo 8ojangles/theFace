@@ -1,0 +1,51 @@
+.info--row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: $standard-spacing;
+
+	p {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.info--detail {
+		font-weight: bold;
+	}
+
+	&.info--row__messages {
+		display: block;
+	}
+}
+
+.info--row__btn {
+	justify-content: space-between;
+}
+
+.info--row__messages {
+
+	.error--message {
+		color: $error-red;
+		display: none;
+		margin-top: $standard-spacing;
+		margin-bottom: 0;
+	}
+
+	&.error {
+		.error--message {
+			display: block;
+		}
+		.confirm--message {
+			display: none;
+		}
+	}
+
+	&.message {
+		.error--message {
+			display: none;
+		}
+		.confirm--message {
+			display: block;
+		}
+	}
+}

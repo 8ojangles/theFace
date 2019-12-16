@@ -1,0 +1,23 @@
+@keyframes spinner-spins {
+	0% { transform: rotate( 0 ); }
+	100% { transform: rotate( 1turn ); }
+}
+
+.loading-spinner {
+	width: 100%;
+	@include flex-centered-children();
+	flex-direction: column;
+	// background-color: $error-red;
+
+	.spinner {
+		width: $spinner-size;
+		height: $spinner-size;
+		border-radius: 50%;
+		margin-bottom: $standard-spacing;
+		border-top: $spinner-border-width solid $spinner-color;
+		border-right: $spinner-border-width solid $spinner-color;
+		border-bottom: $spinner-border-width solid $spinner-color;
+		border-left: $spinner-border-width solid transparent;
+		animation: spinner-spins $spinner-duration infinite linear;
+	}
+}

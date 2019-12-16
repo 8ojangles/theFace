@@ -1,0 +1,49 @@
+@media only screen and (max-width: 960px) {
+	.panel--wrapper {
+		width: 100%;
+	}
+	.panel--main {
+		width: 100%;
+		justify-content: flex-start;
+		header {
+			width: 90%;
+		}
+	}
+	.page--header {
+		width: 100%;
+		padding-bottom: 0;
+	}
+	.info {
+		width: 100%;
+	}
+	.block--grid {
+		width: 80%;
+	}
+
+	.details--panel {
+		width: 100%;
+		bottom: 0;
+		left: 0;
+		top: initial;
+		right: initial;
+		transform: translateY( 0 );
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		.info--row {
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 45%;
+			justify-content: initial;
+			margin-bottom: $standard-spacing/2;
+			padding-bottom: 0;
+			.info--detail {
+				margin-left: 0.5rem;
+			}
+
+			&.info--row__messages {
+				width: 100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Sunrise animation",
+  "version": "1.0.0",
+  "description": "2D Canvas sunrise animation exploring compositing modes to create light effects and using particle engine for star field",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "Particles",
+    "Engine",
+    "Canvas",
+    "Themed"
+  ],
+  "author": "Simon Papanicolaou",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.6.0",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.7",
+    "browserify": "^16.2.3",
+    "browsersync": "0.0.1-security",
+    "cssnano": "^4.1.10",
+    "del": "^4.1.1",
+    "fancy-log": "^1.3.3",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-dart-sass": "^0.9.1",
+    "gulp-data": "^1.3.1",
+    "gulp-mocha": "^6.0.0",
+    "gulp-nunjucks-render": "^2.2.3",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "dbly-linked-list": "^0.3.4",
+    "jquery": "^3.4.1",
+    "object-path": "^0.11.4"
+  }
+}

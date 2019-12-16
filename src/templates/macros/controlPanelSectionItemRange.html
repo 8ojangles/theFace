@@ -1,0 +1,17 @@
+{% macro controlPanelSectionItemRange( options ) %}
+<div class="control--panel__item">
+	<div class="control--panel__item-controls">
+		{% if options.title %}
+		<label for="{{ options.id }}">{{ options.title }}</label>
+		{% endif %}
+		<input type="range" class="range-slider{% if options.flipped %} range-flipped{% endif %}" id="{{ options.id }}" name="{{ options.id }}" min="{{ options.min }}" max="{{ options.max }}" step="{{ options.step }}" data-modifier="{{ options.id }}" data-value-multiplier="{% if options.multiplier %}{{ options.multiplier }}{% else %}1{% endif %}" {% if options.controller %}data-control="{{ options.controller }}"{% else %}data-face{% endif %}>
+		<div class="control--panel__item-labels">
+			<label for="{{ options.id }}">{{ options.label1 }}</label>
+			<label for="{{ options.id }}">{{ options.label2 }}</label>
+		</div>
+	</div>
+	<div class="control--panel__item-output">
+		<output for="{{ options.id }}">0</output>
+	</div>
+</div>
+{% endmacro %}
